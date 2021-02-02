@@ -3,13 +3,13 @@ package com.tts.addressBook;
 import java.util.List;
 
 public interface IAddress {
-    void addAddress();
+    void addAddress(HomeAddress address);
 
     void deleteAddressEntry();
 
     void searchAddress();
 
-    List printAddressBook();
+    void printAddressBook();
 
     void deleteEntireAddressBook();
 
