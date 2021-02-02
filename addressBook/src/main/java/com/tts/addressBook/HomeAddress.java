@@ -16,7 +16,8 @@ public class HomeAddress implements IAddress {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
-    public HomeAddress(){
+
+    public HomeAddress() {
 
     }
 
