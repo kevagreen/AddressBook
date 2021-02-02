@@ -3,23 +3,15 @@ package com.tts.addressBook;
 import java.util.Scanner;
 
 public class Main {
+    private static final HomeAddress address1 = new HomeAddress();
 
     public static void main(String[] args) {
-        int choice = chooseAddressBookAction();
-        HomeAddress address1 = new HomeAddress();
 
-        switch (choice) {
-            case 1 -> address1.addAddress();
-            case 2 -> address1.deleteAddressEntry();
-            case 3 -> address1.searchAddress();
-            case 4 -> address1.printAddressBook();
-            case 5 -> address1.deleteEntireAddressBook();
-            case 6 -> address1.quitProgram();
-        }
+        chooseAddressBookAction();
 
     }
 
-    public static int chooseAddressBookAction() {
+    public static void chooseAddressBookAction() {
         Scanner userChoice = new Scanner(System.in);
         int choice = -1;
         do {
@@ -28,7 +20,15 @@ public class Main {
                     " %n 4)Print Address Book. %n 5)Delete Book. %n 6)Quit. %n");
             System.out.printf("%n>>> ");
             choice = userChoice.nextInt();
-            return choice;
-        } while (userChoice.nextInt() != 6);
+
+            switch (choice) {
+                case 1 -> address1.addAddress();
+                case 2 -> address1.deleteAddressEntry();
+                case 3 -> address1.searchAddress();
+                case 4 -> address1.printAddressBook();
+                case 5 -> address1.deleteEntireAddressBook();
+                case 6 -> address1.quitProgram();
+            }
+        } while (choice != 6);
     }
 }

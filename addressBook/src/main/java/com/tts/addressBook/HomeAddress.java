@@ -29,7 +29,7 @@ public class HomeAddress implements IAddress {
 
     @Override
     public void deleteAddressEntry() {
-
+        System.out.println("deleting address");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class HomeAddress implements IAddress {
 
     @Override
     public void quitProgram() {
-
+        System.out.println("Thanks until next time");
     }
 
     public String getFirstName() {
