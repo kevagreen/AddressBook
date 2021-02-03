@@ -1,6 +1,5 @@
 package com.tts.addressBook;
 
-import java.util.List;
 
 public interface IAddress {
     void addAddress(HomeAddress address);

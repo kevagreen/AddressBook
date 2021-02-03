@@ -18,7 +18,7 @@ public class Main {
             System.out.printf("%nPlease choose what you'd like to do today! %n");
             System.out.printf(" 1)Add an entry. %n 2)Remove an entry. %n 3)Search for an entry." +
                     " %n 4)Print Address Book. %n 5)Delete Book. %n 6)Quit. %n%n>>>");
-           // System.out.printf("%n>>> ");
+
             choice = userChoice.nextInt();
 
             switch (choice) {

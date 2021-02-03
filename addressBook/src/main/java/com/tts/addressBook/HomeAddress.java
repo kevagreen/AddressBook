@@ -18,9 +18,11 @@ public class HomeAddress implements IAddress {
         this.email = email;
     }
 
-    public HomeAddress() {}
+    public HomeAddress() {
+    }
 
-    public HomeAddress(HomeAddress address) {}
+    public HomeAddress(HomeAddress address) {
+    }
 
 
     @Override
@@ -57,12 +59,12 @@ public class HomeAddress implements IAddress {
         if (addressBook.isEmpty()) System.out.printf("\nAddress Book is empty! %n");
         System.out.printf("Search By: %n 1)First Name. %n 2)Last Name. %n 3)Phone Number.%n 4)Email. %n>>>  ");
         int choice = search.nextInt();
-        if(choice > 0 && choice <= 4) System.out.println("Enter Search Info");
+        if (choice > 0 && choice <= 4) System.out.println("Enter Search Info");
         String result = search.next();
-    //
-    for(int i = 0; i < addressBook.size(); i++){
-        if(addressBook.contains(result)) System.out.println(addressBook.get(i));
-    }
+        //
+        for (int i = 0; i < addressBook.size(); i++) {
+            if (addressBook.contains(result)) System.out.println(addressBook.get(i));
+        }
     }
 
     @Override
@@ -71,7 +73,7 @@ public class HomeAddress implements IAddress {
         else System.out.printf("%n Do you want to delete the ENTIRE address book? %n>>> ");
         Scanner deleteBook = new Scanner(System.in);
         String answer = deleteBook.next();
-      if(answer.equals("yes")) addressBook.clear();
+        if (answer.equals("yes")) addressBook.clear();
         System.out.printf("%n You deleted the entire address book! %n");
     }
 
