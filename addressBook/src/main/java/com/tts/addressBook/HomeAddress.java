@@ -23,8 +23,7 @@ public class HomeAddress implements IAddress {
 
     public HomeAddress(HomeAddress address) {
     }
-
-
+    
     @Override
     public void addAddress(HomeAddress address) {
         Scanner addEntry = new Scanner(System.in);
@@ -57,13 +56,31 @@ public class HomeAddress implements IAddress {
     public void searchAddress() {
         Scanner search = new Scanner(System.in);
         if (addressBook.isEmpty()) System.out.printf("\nAddress Book is empty! %n");
-        System.out.printf("Search By: %n 1)First Name. %n 2)Last Name. %n 3)Phone Number.%n 4)Email. %n>>>  ");
-        int choice = search.nextInt();
-        if (choice > 0 && choice <= 4) System.out.println("Enter Search Info");
-        String result = search.next();
-        //
-        for (int i = 0; i < addressBook.size(); i++) {
-            if (addressBook.contains(result)) System.out.println(addressBook.get(i));
+        try {
+            System.out.printf("Search By: %n 1)First Name. %n 2)Last Name. %n 3)Phone Number.%n 4)Email. %n>>>  ");
+            int choice = search.nextInt();
+            if (choice > 0 && choice <= 4) {
+                System.out.println("Enter Search Info");
+                String result = search.next();
+
+                switch (choice) {
+                    case 1 ->
+                            System.out.println(addressBook.stream().filter(address -> address.getFirstName().contains(result)).findAny());
+                    case 2 ->
+                            System.out.println(addressBook.stream().filter(address -> address.getLastName().contains(result)).findAny());
+                    case 3 -> {
+                            long phone = search.nextLong();
+                            System.out.println(addressBook.stream().filter(address -> address.getPhoneNumber().toString().equals(phone)));
+                    }
+                    case 4 ->
+                            System.out.println(addressBook.stream().filter(address -> address.getEmail().contains(result)).findAny());
+                    default ->
+                            System.out.println("Input not found in address book");
+                }
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error Occurred %n" + e);
         }
     }
 
@@ -86,6 +103,42 @@ public class HomeAddress implements IAddress {
     @Override
     public void quitProgram() {
         System.out.println("Thanks! Until next time, goodbye!");
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<HomeAddress> getAddressBook() {
+        return addressBook;
     }
 
     @Override
